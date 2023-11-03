@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.Date;
-
 public class Cliente extends Pessoa{
 
 	private String endereco;
@@ -13,7 +11,7 @@ public class Cliente extends Pessoa{
 		this.cep = cep;
 	}
 
-	public Cliente(int id, String nome, char sexo, Date data_nascimento, String telefone, String email, String rg,
+	public Cliente(int id, String nome, char sexo, String data_nascimento, String telefone, String email, String rg,
 			String endereco, String cep) {
 		super(id, nome, sexo, data_nascimento, telefone, email, rg);
 		this.endereco = endereco;

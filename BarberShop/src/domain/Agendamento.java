@@ -1,16 +1,30 @@
 package domain;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Agendamento {
 
 	private int id;
 	private Cliente cliente;
 	private Servico servico;
 	private float valor;
-	private String data;
-	private String hora;
+	private Date data;
 	private String observacao;
 	
-	
+	public Agendamento(int id, Cliente cliente, Servico servico, float valor, String data) {
+		this.id = id;
+		this.cliente = cliente;
+		this.servico = servico;
+		this.valor = valor;
+		try {
+			this.data = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public int getId() {
 		return id;
 	}
@@ -35,17 +49,11 @@ public class Agendamento {
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
-	}
-	public String getHora() {
-		return hora;
-	}
-	public void setHora(String hora) {
-		this.hora = hora;
 	}
 	public String getObservacao() {
 		return observacao;

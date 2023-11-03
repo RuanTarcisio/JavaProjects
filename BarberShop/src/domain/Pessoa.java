@@ -1,5 +1,7 @@
 package domain;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class Pessoa {
@@ -11,11 +13,16 @@ public abstract class Pessoa {
 	private String email;
 	private String rg;
 		
-	public Pessoa(int id, String nome, char sexo, Date data_nascimento, String telefone, String email, String rg) {
+	public Pessoa(int id, String nome, char sexo, String data_nascimento, String telefone, String email, String rg) {
 		this.id = id;
 		this.nome = nome;
 		this.sexo = sexo;
-		this.data_nascimento = data_nascimento;
+		try {
+			this.data_nascimento = new SimpleDateFormat("dd/MM/yyyy").parse(data_nascimento);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.telefone = telefone;
 		this.email = email;
 		this.rg = rg;

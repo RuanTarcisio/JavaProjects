@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.Date;
-
 public class Usuario extends Pessoa{
 	
 	private String senha;
@@ -18,7 +16,7 @@ public class Usuario extends Pessoa{
 		this.senha = senha;
 	}
 
-	public Usuario(int id, String nome, char sexo, Date data_nascimento, String telefone, String email, String rg,
+	public Usuario(int id, String nome, char sexo, String data_nascimento, String telefone, String email, String rg,
 			String senha, String nivel_acesso) {
 		super(id, nome, sexo, data_nascimento, telefone, email, rg);
 		this.senha = senha;
