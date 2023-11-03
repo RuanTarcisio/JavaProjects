@@ -1,70 +1,45 @@
 package domain;
 
-public class Usuario {
+import java.util.Date;
 
-	private int id;
-	private String nome;
-	private char sexo;
-	private String data_nascimento;
-	private String telefone;
-	private String email;
-	private String rg;
-	private String endereco;
-	private String cep;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public char getSexo() {
-		return sexo;
-	}
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
-	}
-	public String getData_nascimento() {
-		return data_nascimento;
-	}
-	public void setData_nascimento(String data_nascimento) {
-		this.data_nascimento = data_nascimento;
-	}
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getRg() {
-		return rg;
-	}
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-	public String getCep() {
-		return cep;
-	}
-	public void setCep(String cep) {
-		this.cep = cep;
+public class Usuario extends Pessoa{
+	
+	private String senha;
+	private String nivel_acesso;
+	
+	public Usuario(int id, String nome, String senha, String nivel_acesso) {
+		super(id, nome);
+		this.senha = senha;
+		this.nivel_acesso = nivel_acesso;
 	}
 	
+	public Usuario(int id, String nome, String senha) {
+		super(id, nome);
+		this.senha = senha;
+	}
+
+	public Usuario(int id, String nome, char sexo, Date data_nascimento, String telefone, String email, String rg,
+			String senha, String nivel_acesso) {
+		super(id, nome, sexo, data_nascimento, telefone, email, rg);
+		this.senha = senha;
+		this.nivel_acesso = nivel_acesso;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getNivel_acesso() {
+		return nivel_acesso;
+	}
+
+	public void setNivel_acesso(String nivel_acesso) {
+		this.nivel_acesso = nivel_acesso;
+	}
+		
 	
 }
