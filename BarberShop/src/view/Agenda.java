@@ -3,21 +3,21 @@ package view;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import controller.AgendaController;
 
 public class Agenda {
 
@@ -27,6 +27,7 @@ public class Agenda {
 	private JTextField textField_Data;
 	private JTextField textField_Valor;
 	private JTable table;
+	private final AgendaController controller;
 
 	/**
 	 * Launch the application.
@@ -49,6 +50,7 @@ public class Agenda {
 	 */
 	public Agenda() {
 		initialize();
+		controller = new AgendaController(this);
 	}
 
 	/**
@@ -57,7 +59,7 @@ public class Agenda {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1335, 974);
+		frame.setBounds(100, 100, 1300	, 974);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -171,7 +173,7 @@ public class Agenda {
 		frame.getContentPane().add(lblAgenda);
 		
 		JLabel label_1 = new JLabel("");
-		label_1.setBounds(147, 58, 1266, 819);
+		label_1.setBounds(147, 58, 1104, 819);
 		label_1.setIcon(new ImageIcon(Agenda.class.getResource("/view/imagens/Agenda-PainelFundo.png")));
 		frame.getContentPane().add(label_1);
 		

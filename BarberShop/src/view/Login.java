@@ -8,15 +8,22 @@ import java.awt.SystemColor;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 
-public class Tela {
+import controller.LoginController;
+import model.dao.Banco;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Login {
 
 	private JFrame frame;
 	private JTextField textField_Usuario;
 	private JTextField textField_Senha;
-
+	private LoginController loginController;
 	/**
 	 * Launch the application.
 	 */
@@ -24,7 +31,7 @@ public class Tela {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Tela window = new Tela();
+					Login window = new Login();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,8 +43,10 @@ public class Tela {
 	/**
 	 * Create the application.
 	 */
-	public Tela() {
+	public Login() {
 		initialize();
+		loginController = new LoginController(this);
+		Banco.inicia();
 	}
 
 	/**
@@ -50,6 +59,13 @@ public class Tela {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Entrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			
+
+			public void actionPerformed(ActionEvent arg0) {
+				loginController.entrarNoSistema();
+			}
+		});
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 26));
 		btnNewButton.setBounds(318, 490, 169, 55);
 		frame.getContentPane().add(btnNewButton);
@@ -86,13 +102,38 @@ public class Tela {
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel label_FundoLogin = new JLabel("");
-		label_FundoLogin.setIcon(new ImageIcon(Tela.class.getResource("/view/imagens/painel-login.png")));
+		label_FundoLogin.setIcon(new ImageIcon(Login.class.getResource("/view/imagens/painel-login.png")));
 		label_FundoLogin.setBounds(189, 151, 411, 449);
 		frame.getContentPane().add(label_FundoLogin);
 		
 		JLabel lbl_Fundo = new JLabel("");
 		lbl_Fundo.setBounds(0, 0, 760, 906);
-		lbl_Fundo.setIcon(new ImageIcon(Tela.class.getResource("/view/imagens/Logo.jpg")));
+		lbl_Fundo.setIcon(new ImageIcon(Login.class.getResource("/view/imagens/Logo.jpg")));
 		frame.getContentPane().add(lbl_Fundo);
 	}
+
+	public void exibeMensagem(String mensagem) {
+		JOptionPane.showMessageDialog(null, mensagem);
+	}
+
+	public JTextField getTextField_Usuario() {
+		return textField_Usuario;
+	}
+
+	public void setTextField_Usuario(JTextField textField_Usuario) {
+		this.textField_Usuario = textField_Usuario;
+	}
+
+	public JTextField getTextField_Senha() {
+		return textField_Senha;
+	}
+
+	public void setTextField_Senha(JTextField textField_Senha) {
+		this.textField_Senha = textField_Senha;
+	}
+	
+	public void fecharTela() {
+		frame.dispose();
+	}
+	
 }

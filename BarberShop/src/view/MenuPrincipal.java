@@ -10,10 +10,15 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import controller.MenuPrincipalController;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class MenuPrincipal {
 
 	private JFrame frame;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final MenuPrincipalController controller;
 
 	/**
 	 * Launch the application.
@@ -36,6 +41,7 @@ public class MenuPrincipal {
 	 */
 	public MenuPrincipal() {
 		initialize();
+		controller = new MenuPrincipalController(this);
 	}
 
 	/**
@@ -63,6 +69,15 @@ public class MenuPrincipal {
 		
 		JMenu mnNewMenu_1 = new JMenu("Operacoes");
 		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmAgenda = new JMenuItem("Agenda");
+		mntmAgenda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.navegarParaAgenda();
+			}
+		});
+		mntmAgenda.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/view/icons/agenda-icon.png")));
+		mnNewMenu_1.add(mntmAgenda);
 		
 		JMenu mnNewMenu_1_1 = new JMenu("Relatorios");
 		menuBar.add(mnNewMenu_1_1);
