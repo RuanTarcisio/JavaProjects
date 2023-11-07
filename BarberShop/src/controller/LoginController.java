@@ -1,19 +1,19 @@
 package controller;
 
-import controller.helper.LoginHelper;
 import model.Usuario;
 import model.dao.UsuarioDAO;
+import service.LoginService;
 import view.Login;
 import view.MenuPrincipal;
 
 public class LoginController {
 
-	private LoginHelper helper;
+	private LoginService helper;
 	private final Login view;
 
 	public LoginController(Login view) {
 		this.view = view;
-		this.helper = new LoginHelper(view);
+		this.helper = new LoginService(view);
 	}
 
 	public void entrarNoSistema() {

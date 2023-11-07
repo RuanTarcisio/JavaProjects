@@ -82,6 +82,19 @@ public class Banco {
         agendamento.add(agendamento3);
         
     }
+
+
+	public static ArrayList<Agendamento> getAgendamento() {
+		inicia();
+		return agendamento;
+	}
+
+
+	public static void setAgendamento(ArrayList<Agendamento> agendamento) {
+		Banco.agendamento = agendamento;
+	}
+    
+    
     
     
 }

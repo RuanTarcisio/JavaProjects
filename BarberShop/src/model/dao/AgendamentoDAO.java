@@ -57,7 +57,7 @@ public class AgendamentoDAO {
      * @return uma lista com todos os registros do banco
      */
     public ArrayList<Agendamento> selectAll(){
-        return Banco.agendamento;
+        return Banco.getAgendamento();
     }
     
     /**

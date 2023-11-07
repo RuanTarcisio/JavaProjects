@@ -1,13 +1,13 @@
-package controller.helper;
+package service;
 
 import model.Usuario;
 import view.Login;
 
-public class LoginHelper {
+public class LoginService {
 	
 	private final Login view;
 	
-	public LoginHelper(Login view) {
+	public LoginService(Login view) {
 		this.view = view;
 	}
 

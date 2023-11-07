@@ -18,8 +18,10 @@ public class Agendamento {
 		this.cliente = cliente;
 		this.servico = servico;
 		this.valor = valor;
+		
 		try {
-			this.data = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+			this.data = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(data);
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,6 +63,14 @@ public class Agendamento {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
+	public String getDataFormatada() {
+		return new SimpleDateFormat("dd/MM/yyy").format(data);
+	}
+	
+	public String getHoraFormatada() {
+		return new SimpleDateFormat("h:mm a").format(data);
+	}
+	
 	
 	
 }
