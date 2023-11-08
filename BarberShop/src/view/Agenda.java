@@ -5,8 +5,9 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,8 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.AgendaController;
 import model.dao.Banco;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
+import javax.swing.JScrollPane;
 
 public class Agenda {
 
@@ -31,11 +31,10 @@ public class Agenda {
 	private JTextField textField_Valor;
 	private JTable agendaTable;
 	private final AgendaController controller;
-	private  Banco name;
+	private Banco name;
 	private JComboBox<String> comboBox_Cliente;
 	private JComboBox<String> comboBox_Servico;
-		
-	
+	private JTextArea textArea_Obser;
 
 	/**
 	 * Launch the application.
@@ -71,23 +70,26 @@ public class Agenda {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1300, 974);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 
 		JButton btnNewButton = new JButton("Agendar");
+		btnNewButton.setBounds(713, 439, 490, 42);
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 22));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				controller.agendar();
 			}
 		});
+		frame.getContentPane().setLayout(null);
+
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(331, 599, 872, 231);
+		frame.getContentPane().add(scrollPane_1);
 
 		agendaTable = new JTable();
+		scrollPane_1.setViewportView(agendaTable);
 		agendaTable.setFont(new Font("Dialog", Font.PLAIN, 16));
 		agendaTable.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"ID", "CLIENTE", "SERVICO", null, "DATA", "HORARIO", "OBS."},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
 				{null, null, null, null, null, null, null},
 				{null, null, null, null, null, null, null},
 				{null, null, null, null, null, null, null},
@@ -101,29 +103,28 @@ public class Agenda {
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				Object.class, Object.class, Object.class, Object.class, String.class, String.class, String.class
+				Object.class, Object.class, Object.class, String.class, String.class, String.class, String.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
 		});
-		agendaTable.getColumnModel().getColumn(6).setPreferredWidth(185);
-		agendaTable.setBounds(331, 540, 872, 198);
-		frame.getContentPane().add(agendaTable);
-		btnNewButton.setBounds(713, 439, 490, 42);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(713, 220, 490, 218);
+		frame.getContentPane().add(scrollPane);
+
+		textArea_Obser = new JTextArea();
+		scrollPane.setViewportView(textArea_Obser);
 		frame.getContentPane().add(btnNewButton);
 
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(713, 240, 490, 198);
-		frame.getContentPane().add(textArea);
-
 		comboBox_Servico = new JComboBox();
+		comboBox_Servico.setBounds(331, 325, 180, 27);
 		comboBox_Servico.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				controller.atualizaValor();
 			}
 		});
-		comboBox_Servico.setBounds(331, 325, 180, 27);
 		frame.getContentPane().add(comboBox_Servico);
 
 		comboBox_Cliente = new JComboBox();
@@ -203,6 +204,14 @@ public class Agenda {
 		frame.getContentPane().add(label);
 	}
 
+	public JTextArea getTextArea_Obser() {
+		return textArea_Obser;
+	}
+
+	public void setTextArea_Obser(JTextArea textArea_Obser) {
+		this.textArea_Obser = textArea_Obser;
+	}
+
 	public JTable getAgendaTable() {
 		return agendaTable;
 	}
@@ -210,7 +219,7 @@ public class Agenda {
 	public void setAgendaTable(JTable agendaTable) {
 		this.agendaTable = agendaTable;
 	}
-	
+
 	public JComboBox<String> getComboBox_Cliente() {
 		return comboBox_Cliente;
 	}

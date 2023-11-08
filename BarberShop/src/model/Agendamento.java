@@ -23,10 +23,17 @@ public class Agendamento {
 			this.data = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(data);
 			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public Agendamento(int id, Cliente cliente, Servico servico, float valor, String data, String observacao) {
+		this(id,cliente, servico,valor,data);
+		this.observacao = observacao;
+	}
+
+
 	public int getId() {
 		return id;
 	}

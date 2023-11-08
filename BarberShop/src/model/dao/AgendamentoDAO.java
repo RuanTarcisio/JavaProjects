@@ -15,6 +15,7 @@ public class AgendamentoDAO {
         if(agendamento.getId() == 0){
             agendamento.setId(proximoId());
             Banco.agendamento.add(agendamento);
+//            System.out.println(Banco.agendamento.size());
         }
         
         
@@ -57,7 +58,7 @@ public class AgendamentoDAO {
      * @return uma lista com todos os registros do banco
      */
     public ArrayList<Agendamento> selectAll(){
-        return Banco.getAgendamento();
+        return Banco.agendamento;
     }
     
     /**

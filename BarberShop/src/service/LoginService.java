@@ -3,7 +3,7 @@ package service;
 import model.Usuario;
 import view.Login;
 
-public class LoginService {
+public class LoginService implements IService{
 	
 	private final Login view;
 	
